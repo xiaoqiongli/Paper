@@ -30,7 +30,7 @@ vfv=fv*c/w_lamd[wiseband]
 
 # Type II QSO template: http://www.iasf-milano.inaf.it/~polletta/templates/swire_templates.html
 data=[]
-r = open('/Users/qiong/software/idl_package/qsfit/IDL/qsfit/components/swire/QSO2_template_norm.sed','r')
+r = open('type-II.sed','r')
 a= r.readlines()
 for i in a:
     b = i.strip().split()
@@ -44,7 +44,6 @@ fl = norm_fl*fl_w/norm_fl[abs(w_lamd[wiseband]/(1.+z)-l)==np.min(abs(w_lamd[wise
 Ll = 4*3.14*(dl*3.086*10**24)**2*fl # luminousity lamda
 L_5100 = Ll[abs(5100-l)==np.min(abs(5100-l))]
 L_iso = 10**(4.89 + 0.91 * np.log10(5100*L_5100))
-#L_iso = scipy.integrate.trapz(Ll,l) # erg-1 s-1; intergration for all wave
 L_x = 10**((np.log10(L_iso)-23.04)/0.52)
 print 'L_x',L_x
 print 'L_iso',L_iso
